@@ -378,6 +378,7 @@
  -- 전 사원의 사원명, 보너스 조회 (보너스 기준 오름차순 정렬)
  SELECT EMP_NAME, BONUS
  FROM EMPLOYEE
+ 
  --ORDER BY BONUS; --오름차순이여서 ASC가 생략됨
  --ORDER BY BONUS DESC; --내림차순(NULL이 앞으로감)
  ORDER BY BONUS DESC NULLS LAST; --내림차순-NULL을 뒤로하고 싶을때
