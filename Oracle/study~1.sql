@@ -6,13 +6,20 @@
  SELECT DEPARTMENT_NAME || '의 정원은' || CAPACITY || '명 입니다.'
  FROM TB_DEPARTMENT;
  
+  select * from TB_CLASS;
+  select * from TB_CLASS_PROFESSOR;
+  select * from TB_DEPARTMENT;
+  select * from TB_GRADE;
+  select * from TB_PROFESSOR;
+  select * from TB_STUDENT;
+ 
  --3. "국어국문학과"에 다니는 여학생 중 현재 휴학중인 여학생을 찾아달라는 요청이 들어왔다. 누구인가? 
 -- (국문학과의 '학과코드'는 학과 테이블(TB_DEPARTMENT)을 조회해서 찾아 내도록 하자)
  SELECT STUDENT_NAME
  FROM TB_STUDENT
- WHERE DEPARTMENT_NO = '001' AND COACH_PROFESSOR_NO IS NULL;
+ WHERE DEPARTMENT_NO = '001' AND STUDENT_SSN LIKE '_______2%' AND ABSENCE_YN = 'Y';
  
- -- 4번
+ -- 4. "국어국문학과"에 다니는 여학생
  SELECT STUDENT_NAME
  FROM TB_STUDENT
  WHERE STUDENT_NO IN('A513079', 'A513090', 'A513091', 'A513110', 'A513119');
