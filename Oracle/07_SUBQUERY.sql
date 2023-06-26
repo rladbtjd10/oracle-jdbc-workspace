@@ -335,6 +335,88 @@ ORDER BY SALARY DESC;
 SELECT ROWNUM, EMP_NAME, SALARY
 FROM EMPLOYEE
 ORDER BY SALARY DESC;
+
+-- 이미 순번이 정해진 다음에 정렬이 됨!
+-- FROM --> SELECT --> ORDER BY
+
+SELECT ROWNUM, EMP_NAME, SALARY
+FROM (SELECT ROWNUM, EMP_NAME, SALARY
+           FROM EMPLOYEE
+           ORDER BY SALARY DESC)
+WHERE ROWNUM <= 5;
+
+-- 부서별 평균 급여가 높은 3개 부서의 부서 코드, 평균 급여 조회
+-- 힌트: 별칭을 사용
+-- 1) 인라인 뷰를 사용하는 방법
+SELECT DEPT_CODE, ROUND(AVG(NVL(SALARY,0)))
+FROM EMPLOYEE 
+GROUP BY DEPT_CODE
+ORDER BY AVG(NVL(SALARY,0)) DESC;
+
+SELECT ROWNUM, DEPT_CODE, 평균급여
+FROM (SELECT DEPT_CODE, ROUND(AVG(NVL(SALARY, 0))) "평균급여"
+           FROM EMPLOYEE
+           GROUP BY DEPT_CODE
+           ORDER BY AVG(NVL(SALARY,0)) DESC)
+WHERE ROWNUM <= 3;
+
+-- 2) WITH를 사용하는 방법
+WITH TOPN_SAL AS (
+           SELECT DEPT_CODE, ROUND(AVG(NVL(SALARY, 0))) "평균급여"
+           FROM EMPLOYEE
+           GROUP BY DEPT_CODE
+           ORDER BY AVG(NVL(SALARY,0)) DESC
+)
+SELECT ROWNUM, DEPT_CODE, 평균급여
+FROM TOPN_SAL
+WHERE ROWNUM <= 3;
+
+/*
+     RANK 함수
+     - RANK() OVER(정렬 기준) : 동일한 순위 이후의 등수를 동일한 인원수 만큼 건너뛰고 순위를 계산한다.
+       (ex. 공동 1위가 2명이면 다음 순위는 3위)
+     - DENSE_RANK() OVER(정렬기준) : 동일한 순위 이후의 등수를 무조건 1씩 증가한다.
+       (ex. 공동 1위가 2명이면 다음 순위는 2위)
+*/
+-- 사원별 급여가 높은 순서대로 순위 매겨서 순위, 사원명, 급여 조회
+-- 공동 19위 2명 뒤에 순위는 21위
+SELECT RANK() OVER(ORDER BY SALARY DESC), EMP_NAME, SALARY
+FROM EMPLOYEE;
+
+-- 공동 19위 2명 뒤에 순위는 20위
+SELECT DENSE_RANK() OVER(ORDER BY SALARY DESC), EMP_NAME, SALARY
+FROM EMPLOYEE;
+
+-- 상위 5명만 조회
+-- RANK 함수는 WHERE 절에 사용할 수 없다!
+SELECT RANK() OVER(ORDER BY SALARY DESC), EMP_NAME, SALARY
+FROM EMPLOYEE
+WHERE ROWNUM <= 5; -- 이렇게 사용 금지!
+
+-- 인라인 뷰 사용!
+SELECT RANK, EMP_NAME, SALARY
+FROM (
+           SELECT
+                  RANK() OVER(ORDER BY SALARY DESC) "RANK",
+                  EMP_NAME,
+                  SALARY
+           FROM EMPLOYEE
+)
+WHERE RANK <= 5;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
  
 
