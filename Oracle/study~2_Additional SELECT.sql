@@ -17,10 +17,12 @@
   select * from TB_GRADE;
   select * from TB_PROFESSOR;
   select * from TB_STUDENT;
+  
  --3번
  SELECT PROFESSOR_NAME "교수이름", PROFESSOR_SSN "나이"
  FROM TB_PROFESSOR
- WHERE PROFESSOR_NAME LIKE '남자';
+ WHERE PROFESSOR_NAME LIKE '남자'
+ ORDER BY 
  
 
  
