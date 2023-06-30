@@ -267,5 +267,7 @@ TRUNCATE TABLE EMP_SALARY;
 DROP TABLE DEPT_COPY;
 DROP TABLE EMP_SALARY;
 
+---------------------------------------------------------여기까지 시험범위
+
   
   
