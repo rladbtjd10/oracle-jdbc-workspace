@@ -37,7 +37,7 @@
      설명
      - STRING : 문자 타입 컬럼 또는 문자열
      - STR : 찾으려는 문자열
-     - POSITIION : 찾을 위치의 시작 값(기본값 1)
+     - POSITION : 찾을 위치의 시작 값(기본값 1)
          1 : 앞에서부터 찾는다.
         -1 : 뒤에서부터 찾는다.
      - OCCURRENCE : 찾을 문자값이 반복될 때 지정하는 빈도(기본값1), 음수 사용 불가
@@ -291,6 +291,7 @@ SELECT TO_CHAR(SYSDATE, 'PM HH:MI:SS') FROM DUAL;
 SELECT TO_CHAR(SYSDATE, 'AM HH24:MI:SS') FROM DUAL;
 -- DY, DAY : 요일 / DD : 일
 SELECT TO_CHAR(SYSDATE, 'MON DD, DY, YYYY') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'MON DD, DAY, YYYY') FROM DUAL;
 
 -- 년도와 관련된 포맷
 SELECT TO_CHAR(SYSDATE, 'YYYY'),
