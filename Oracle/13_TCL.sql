@@ -64,11 +64,32 @@ ROLLBACK;
 SELECT*FROM EMP_TEST;
 
 
+-- JDBC -------------------------------------------------------------------
+CREATE TABLE CUSTOMER(
+    NAME VARCHAR2(20),
+    AGE NUMBER,
+    ADDRESS VARCHAR2(100)
+);
+SELECT * FROM CUSTOMER;
 
 
+CREATE TABLE BANK(
+    NAME VARCHAR2(20),
+    BANKNAME VARCHAR(40),
+    BALANCE NUMBER
+);
+INSERT INTO BANK VALUES('김도경', '국민은행', 1000000);
+INSERT INTO BANK VALUES('김민소', '신한은행', 500000);
+
+SELECT * FROM BANK;
+
+COMMIT;
 
 
-
+--이 자리는 내가 접수했다--
+--       >             <         --
+--              ㅇ                --
+---------------------------------
 
 
 
