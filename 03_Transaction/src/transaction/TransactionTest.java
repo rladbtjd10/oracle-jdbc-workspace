@@ -26,6 +26,7 @@ public class TransactionTest {
 			conn.setAutoCommit(false);
 			
 			// 3.PreparedStatement
+			
 			String query1 = "INSERT INTO customer(name, age, address) VALUES(?, ?, ?)";
 			PreparedStatement st = conn.prepareStatement(query1);
 			
