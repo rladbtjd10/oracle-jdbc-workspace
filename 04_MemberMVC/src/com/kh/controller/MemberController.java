@@ -19,7 +19,8 @@ public class MemberController {
          
             if (dao.getMember(m.getId()) == null) {
 				dao.registerMember(m);
-            } return true;
+				return true;
+				} 
 			} catch (SQLException e) {
 				e.printStackTrace();
         } return false;
