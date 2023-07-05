@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 
 import com.kh.model.vo.Book;
@@ -79,30 +80,57 @@ public class BookDAO implements BookDAOTemplate{
 		PreparedStatement st = conn.prepareStatement(p.getProperty("registerBook"));
 		st.setString(1, book.getBkTitle());
 		st.setString(2, book.getBkAuthor());
-		st.executeUpdate();
+		
+		int result = st.executeUpdate();
 		closeAll(st, conn);
-		return 0;
+		return result;
 	}
 
 	@Override
 	public int sellBook(int no) throws SQLException {
 		// 책 삭제! DELETE문!
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("sellBook"));
+		st.setInt(1, no);
 		
-		return 0;
+		int result = st.executeUpdate();
+		closeAll(st, conn);
+		return result;
 	}
 
 	@Override
 	public int registerMember(Member member) throws SQLException {
+		// id, password, name
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("registerMember"));
+		st.setString(1, member.getMemberId());
+		st.setString(2, member.getMemberPwd());
+		st.setString(3, member.getMemberName());
 		
-		// id, name, password
-		return 0;
+		int result = st.executeUpdate();
+		closeAll(st, conn);
+		return result;
 	}
 
 	@Override
 	public Member login(String id, String password) throws SQLException {
 		//char rs.getString("status").charAt(0)
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("login"));
+		st.setString(1, id);
+		st.setString(2, password);
+		
+		ResultSet rs = st.executeQuery();;
+		
+		Member m = null;
+		if(rs.next()){
+			
+			m = new Member(rs.getString("imemberId"), rs.getString("memberPwd"), rs.getString("memberName"));
+			
+		}
+		closeAll(rs, st, conn);
+		return m;
 	
-		return null;
 	}
 
 	@Override
@@ -110,18 +138,38 @@ public class BookDAO implements BookDAOTemplate{
 		// UPDATE - STATUS를 Y로!
 		// status가 n이면 회원 유지, y면 회원 탈퇴
 		// n이 기본값! <--- 회원유지!
-		return 0;
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("deleteMember"));
+		st.setString(1, id);
+		st.setString(2, password);
+		
+		int result = st.executeUpdate();
+		closeAll(st, conn);
+		return result;
 	}
 
 	@Override
 	public int rentBook(Rent rent) throws SQLException {
 		// 책 대여 기능! INSERT ~~ TB_RENT
-		return 0;
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("rentBook"));
+		st.setInt(1, rent.getRentNo());
+		
+		int result = st.executeUpdate();
+		closeAll(st, conn);
+		return result;
 	}
+
 
 	@Override
 	public int deleteRent(int no) throws SQLException {
-		return 0;
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("deleteRent"));
+		st.setInt(1, no);
+		
+		int result = st.executeUpdate();
+		closeAll(st, conn);
+		return result;
 	}
 
 	@Override
