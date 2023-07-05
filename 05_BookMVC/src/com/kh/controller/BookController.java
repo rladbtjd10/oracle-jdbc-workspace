@@ -33,6 +33,8 @@ public class BookController {
 	}
 	
 	public boolean deleteMember() {
+		//위에 member 변수있잖아요~~
+		//로그인때 담아놓아서~~ 매개변수 따로 안 받은 겁니다!
 		return false;
 	}
 	
