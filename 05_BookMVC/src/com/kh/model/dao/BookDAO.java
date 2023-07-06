@@ -57,20 +57,20 @@ public class BookDAO implements BookDAOTemplate{
 		// ArrayList에 추가할 때 add 메서드!
 		// rs.getString("bk_title"); //bkTitle 아님!
 		
-		ArrayList<Book> booklist = new ArrayList<>();
-
 		Connection conn= getConnect();
 		PreparedStatement st = conn.prepareStatement(p.getProperty("printBookAll"));
 		
 		ResultSet rs = st.executeQuery();
 		
+		ArrayList<Book> bookList = new ArrayList<>();
+		
 		if(rs.next()){
 			
-			booklist.add(new Book(rs.getString("bkTitle"), rs.getString("bkAuthor")));
+			bookList.add(new Book(rs.getInt("bk_no"), rs.getString("bkTitle"), rs.getString("bkAuthor")));
 		
 		}
 		closeAll(rs, st, conn);
-		return booklist;
+		return bookList;
 	}
 
 	@Override
@@ -120,16 +120,22 @@ public class BookDAO implements BookDAOTemplate{
 		st.setString(1, id);
 		st.setString(2, password);
 		
-		ResultSet rs = st.executeQuery();;
+		ResultSet rs = st.executeQuery();
 		
-		Member m = null;
+		Member member = null;
 		if(rs.next()){
 			
-			m = new Member(rs.getString("imemberId"), rs.getString("memberPwd"), rs.getString("memberName"));
+			member = new Member();
+			member.setMemberNo(rs.getInt("member_no"));
+			member.setMemberId(rs.getString("member_id"));
+			member.setMemberPwd(rs.getString("member_pwd"));
+			member.setMemberName(rs.getString("member_name"));
+			member.setStatus(rs.getString("status").charAt(0));
+			member.setEnrollDate(rs.getDate("enfoll_Date"));
 			
 		}
 		closeAll(rs, st, conn);
-		return m;
+		return member;
 	
 	}
 
@@ -153,8 +159,9 @@ public class BookDAO implements BookDAOTemplate{
 		// 책 대여 기능! INSERT ~~ TB_RENT
 		Connection conn = getConnect();
 		PreparedStatement st = conn.prepareStatement(p.getProperty("rentBook"));
-		st.setInt(1, rent.getRentNo());
-		
+		st.setInt(1, rent.getMember().getMemberNo());
+		st.setInt(2, rent.getBook().getBkNo());
+
 		int result = st.executeUpdate();
 		closeAll(st, conn);
 		return result;
@@ -179,8 +186,27 @@ public class BookDAO implements BookDAOTemplate{
 		// 조건은 MEMBER_ID 가지고 가져오니까!
 		// WHILE문 안에서! Rent rent = new Rent();
 		// setter 사용!!
-		// rest.setBook(new Book(rs.getString("bk_title"), rs.geString("bk.author")));
-		return null;
+		// rent.setBook(new Book(rs.getString("bk_title"), rs.getString("bk.author")));
+		Connection conn = getConnect();
+		PreparedStatement st = conn.prepareStatement(p.getProperty("deleteRent"));
+		st.setString(1, id);
+		
+		ArrayList<Rent> rentlist = new ArrayList<>();
+		Book book = new Book();
+		Member member = new Member();
+		
+		ResultSet rs = st.executeQuery();
+		
+		while(rs.next()) {
+			Rent rent = new Rent();
+			rent.setRentNo(rs.getInt("rent_no"));
+			rent.setRentDate(rs.getDate("rent_date"));
+			rent.setBook(new Book(rs.getString("bk_title"), rs.getString("bk.author")));
+			
+			rentlist.add(rent);
+		}
+		closeAll(rs, st, conn);
+		return rentlist;
 	}
 	
 	

@@ -11,9 +11,7 @@ public class Member {
 	private char status;
 	private Date enrollDate;
 	
-	public Member() {
-		super();
-	}
+	public Member() {}
 	public Member(String memberId, String memberPwd, String memberName) {
 		super();
 		this.memberId = memberId;
@@ -55,6 +53,11 @@ public class Member {
 	}
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
+	}
+	@Override
+	public String toString() {
+		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
+				+ memberName + ", status=" + status + ", enrollDate=" + enrollDate + "]";
 	}
 	
 

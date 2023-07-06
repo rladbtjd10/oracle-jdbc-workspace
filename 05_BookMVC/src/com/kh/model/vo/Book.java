@@ -7,14 +7,19 @@ public class Book {
 	private int bkNo;
 	private String bkTitle;
 	private String bkAuthor;
-	public Book() {
-		super();
-	}
+	public Book() {}
 	public Book(String bkTitle, String bkAuthor) {
 		super();
 		this.bkTitle = bkTitle;
 		this.bkAuthor = bkAuthor;
 	}
+	
+	public Book(int bkNo, String bkTitle, String bkAuthor) {
+		this.bkNo = bkNo;
+		this.bkTitle = bkTitle;
+		this.bkAuthor = bkAuthor;
+	}
+	
 	public int getBkNo() {
 		return bkNo;
 	}
@@ -32,6 +37,10 @@ public class Book {
 	}
 	public void setBkAuthor(String bkAuthor) {
 		this.bkAuthor = bkAuthor;
+	}
+	@Override
+	public String toString() {
+		return "Book [bkNo=" + bkNo + ", bkTitle=" + bkTitle + ", bkAuthor=" + bkAuthor + "]";
 	}
 
 }
