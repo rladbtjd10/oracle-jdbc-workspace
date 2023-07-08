@@ -19,7 +19,7 @@
         (CREATE 생성, ALTER 수정, DROP 삭제) - 테이블
       2. DML (Data Manipulation Language) : 데이터 조작어  ★
        - 실제 데이터를 조작하기 위해 사용하는 언어
-        (INSERT 삽입, UPEATE 수정, DELETE 삭제) - 데이터
+        (INSERT 삽입, UPDATE 수정, DELETE 삭제) - 데이터
       3. DQL  (Data Query Language) : 데이터 질의어 ★
        - 데이터를 조회(검색)하기 위해 사용하는 언어(SELECT)
       4. DCL (Data Control Language) : 데이터 제어어
