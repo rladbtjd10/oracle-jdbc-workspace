@@ -430,6 +430,7 @@ SELECT TO_CHAR(SYSDATE, 'YYYY'),
        END AS "급여 등급"
  FROM EMPLOYEE;
  
+ 
  -- 그룹 함수-----------------------------------------------------------------------------------------------------------------------------
  
  /*
@@ -469,8 +470,9 @@ SELECT TO_CHAR(SYSDATE, 'YYYY'),
  -- 가장 작은 값에 해당하는 사원명, 급여, 입사일
  -- 가장 큰 값에 해당하는 사원명, 급여, 입사일 조회
  SELECT MIN(EMP_NAME), MIN(SALARY), MIN(HIRE_DATE),
-            MAX(EMP_NAME), MIN(SALARY), MIN(HIRE_DATE)
+            MAX(EMP_NAME), MAX(SALARY), MAX(HIRE_DATE)
  FROM EMPLOYEE;
+ 
  
 /*
      COUNT(*|컬럼|DISTINCT 컬럼)

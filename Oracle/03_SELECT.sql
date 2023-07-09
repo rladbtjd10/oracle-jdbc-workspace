@@ -151,9 +151,11 @@
  SELECT DISTINCT JOB_CODE
  FROM EMPLOYEE;
  
+ 
  -- EMPLOYEE에 부서코드 조회
  SELECT DISTINCT DEPT_CODE
  FROM EMPLOYEE;
+ 
  
  -- 유의사항! DISTINCT는 SELECT절에 딱 한번만 기술 가능
  -- EMPLOYEE에 직급코드, 부서코드 조회
