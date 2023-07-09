@@ -24,7 +24,7 @@
  -- 전 직원의 평균 급여보다 더 많은 급여를 받는 사원들의 사번, 사원명, 직급코드, 급여 조회
  SELECT EMP_ID, EMP_NAME, JOB_CODE, SALARY
  FROM EMPLOYEE
- WHERE SALARY > (SELECT  AVG(SALARY)
+ WHERE SALARY > (SELECT AVG(SALARY)
                                   FROM EMPLOYEE);
                                   
 /*
@@ -77,8 +77,7 @@
   GROUP BY DEPT_CODE
   HAVING SUM(SALARY) = (SELECT MAX(SUM(SALARY))
                                        FROM EMPLOYEE
-                                       GROUP BY DEPT_CODE) ;
-                                    
+                                       GROUP BY DEPT_CODE) ;                             
                                     
  -- 전지연 사원이 속해있는 부서들의 사번, 사원명, 전화번호, 직급명, 부서명, 입사일 조회
  -- (단, 전지연 사원은 제외)
