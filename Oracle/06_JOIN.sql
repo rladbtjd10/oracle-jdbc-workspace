@@ -162,8 +162,7 @@
  FROM EMPLOYEE
  JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID);
  
- -- 1) LEFT [OUTER] JOIN : 두 테이블 중 왼편에 기술된 테이블을 기준으로 JOIN
- -- 부서 배치를 받지 않았던 2명의 사원 정보도 조회됨
+ -- 1) LEFT [OUTER] JOI 부서 배치를 받지 않았던 2명의 사원 정보도 조회됨 : 두 테이블 중 왼편에 기술된 테이블을 기준으로 JOIN
  --> ANSI 구문
  SELECT EMP_NAME, DEPT_TITLE, SALARY, SALARY*12
  FROM EMPLOYEE
