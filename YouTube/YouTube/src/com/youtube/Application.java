@@ -18,32 +18,32 @@ public class Application {
 	
 	public static void main(String[] args) {
 		Application app = new Application();
-		//app.register();
-		//app.login();
+		app.register();
+		app.login();
 		
-		//app.addChannel();
-		//app.myChannel();
-		//app.updateChannel();
-		//app.deleteChannel();
+		app.addChannel();
+		app.myChannel();
+		app.updateChannel();
+		app.deleteChannel();
 		
-//		app.addVideo();
-//		app.videoAllList();
-//		app.channelVideoList();
-//		app.updateVideo();
-//		app.deleteVideo();
-//		app.viewVideo();
+		app.addVideo();
+		app.videoAllList();
+		app.channelVideoList();
+		app.updateVideo();
+		app.deleteVideo();
+		app.viewVideo();
 
-//		app.addComment();
-//		app.updateComment();
-//		app.deleteComment();
+		app.addComment();
+		app.updateComment();
+		app.deleteComment();
 		
-//		app.addCommentLike();
-//		app.deleteCommentLike();
-//		app.addLike();
-//		app.deleteLike();
+		app.addCommentLike();
+		app.deleteCommentLike();
+		app.addLike();
+		app.deleteLike();
 		
-//		app.addSubscribe();
-//		app.mySubscribeList();
+		app.addSubscribe();
+		app.mySubscribeList();
 		app.deleteSubscribe();
 	}
 	
