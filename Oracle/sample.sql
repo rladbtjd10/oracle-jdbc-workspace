@@ -24,7 +24,7 @@ CREATE TABLE MEMBER(
     ADDRESS VARCHAR2(200) NOT NULL
  );
  
- 
+
  
  ----------------------------------------
  
@@ -45,7 +45,7 @@ INSERT INTO ITEM VALUES(SEQ_ITEM.NEXTVAL, '레몬', 3000, '구연산 비타민C�
 COMMIT;
 SELECT * FROM ITEM;
 
-
+---------------------------------------------------------------------------------
 CREATE TABLE MEMBER2(
     MEMBERID VARCHAR2(100) PRIMARY KEY,
     MEMBERPASS VARCHAR2(150) NOT NULL,
