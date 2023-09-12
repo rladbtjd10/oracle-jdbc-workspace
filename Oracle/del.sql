@@ -1,3 +1,4 @@
+
 --예약
 CREATE TABLE RESERVATION(
     RESER_CODE NUMBER,
@@ -38,7 +39,8 @@ CREATE SEQUENCE SEQ_RESERVATION;
 --리뷰
 CREATE SEQUENCE SEQ_REVIEW;
 
-
+select * from reservation;
+select * from review;
 
 
 
